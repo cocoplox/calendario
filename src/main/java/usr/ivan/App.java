@@ -1,16 +1,19 @@
 package usr.ivan;
-
 /**
  * Hello world!
  *
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+public class App {
+    public static void main(String[] args) {
+        App app = new App();
+        app.run();
     }
-    public String Hola(){
-        return "Hola Mundo";
+
+    public void run() {
+       //Llamamos a la clase Initial, que pedirá credenciales y creará la tabla inicial
+       Initial initial = new Initial();
+       initial.inicializar();
+
     }
+
 }

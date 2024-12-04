@@ -19,11 +19,4 @@ public class AppTest
         assertTrue( true );
 
     }
-    @Test
-    public void HelloWorldTests(){
-        String esperado = "Hola Mundo";
-        App app = new App();
-        String resultado = app.Hola();
-        assertEquals(esperado,resultado);
-    }
 }
