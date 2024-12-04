@@ -1,7 +1,9 @@
 package usr.ivan.models;
+
 import java.util.Date;
 
 import jakarta.persistence.*;
+
 @Entity
 @Table(name = "task")
 public class Task {
@@ -16,29 +18,64 @@ public class Task {
     private boolean completed;
     @Column(nullable = false)
     private Date date;
-    
-    public Long getId(){
+
+    public Task(String title, String descripcion, Date date) {
+        this.title = title;
+        this.description = descripcion;
+        this.date = date;
+        this.completed = false;
+    }
+
+    public Task() {
+    } // Lo necesita hibernate para fulurar
+
+    public Long getId() {
         return id;
     }
-    public void setId(Long id){
+
+    public void setId(Long id) {
         this.id = id;
     }
-    public String getTitle(){
+
+    public String getTitle() {
         return title;
     }
-    public void setTitle(String title){
+
+    public void setTitle(String title) {
         this.title = title;
     }
-    public String getDescription(){
-       return description; 
+
+    public String getDescription() {
+        return description;
     }
-    public void setDescription(String description){
+
+    public void setDescription(String description) {
         this.description = description;
     }
-    public boolean isCompleted(){
+
+    public boolean isCompleted() {
         return completed;
     }
-    public void setCompleted(boolean completed){
+
+    public void setCompleted(boolean completed) {
         this.completed = completed;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "ID: " + id + "\n" +
+                "Titulo: " + title + "\n" +
+                "Descripción: " + description + "\n" +
+                "Completada? " + completed + "\n" +
+                "Fecha: " + date + "\n" +
+                "****************************";
     }
 }

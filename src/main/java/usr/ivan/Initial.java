@@ -8,8 +8,9 @@ public class Initial {
         DatabaseCredentials dc = new DatabaseCredentials();
 
         try {
-
             HibernateUtil.buildSessionFactory(dc.getCredentials());
+
+            
             System.out.println("Conexion con la base de datos, exitosa");
 
         } catch (Exception e) {
