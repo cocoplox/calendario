@@ -14,7 +14,7 @@ public class TaskDAO {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.persist(task); // TODO: Guarda el objeto en la BBDD, ojo cuidao
+            session.persist(task); 
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
