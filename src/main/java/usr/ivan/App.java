@@ -1,7 +1,9 @@
 package usr.ivan;
 
+import java.time.Instant;
+import java.util.Date;
 
-
+import usr.ivan.models.Task;
 
 /**
  * Hello world!
@@ -15,13 +17,12 @@ public class App {
 
     public void run() {
        //Llamamos a la clase Initial, que pedirá credenciales y creará la tabla inicial
-       //Initial initial = new Initial();
-       //initial.inicializar();
+       Initial initial = new Initial();
+       initial.inicializar();
 
    
        //Mostrar toda las tareas y tal, crear una clase propia
-    //TaskDAO taskDAO = new TaskDAO();
-   // Task taskTest = new Task("Titulo", "descripcion", Date.from(Instant.now()));
+    TaskDAO taskDAO = new TaskDAO();
     //taskDAO.saveTask(taskTest);
 
     //List<Task> allTasks = taskDAO.getAllTasks();
@@ -29,7 +30,7 @@ public class App {
 
     //taskDAO.deleteTaskById(1);
     MainFrame mainFrame = new MainFrame();
-    mainFrame.buildFrame();
+    mainFrame.buildFrame(taskDAO);
     }
 
 
