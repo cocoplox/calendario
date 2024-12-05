@@ -1,5 +1,6 @@
 package usr.ivan.models;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import jakarta.persistence.*;
@@ -17,9 +18,9 @@ public class Task {
     @Column(nullable = false)
     private boolean completed;
     @Column(nullable = false)
-    private Date date;
+    private LocalDate date;
 
-    public Task(String title, String descripcion, Date date) {
+    public Task(String title, String descripcion, LocalDate date) {
         this.title = title;
         this.description = descripcion;
         this.date = date;
@@ -61,11 +62,11 @@ public class Task {
         this.completed = completed;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

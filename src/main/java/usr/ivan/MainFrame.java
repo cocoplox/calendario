@@ -66,6 +66,13 @@ private DefaultTableModel taskTableModelM;
             e.printStackTrace();
          }
       });
+
+      addButton.addActionListener(event -> {
+         TaskBuilder tb = new TaskBuilder();
+         Task addedTask = tb.buildTask();
+         taskDAO.saveTask(addedTask);
+         loadTasksFromDatabase(taskDAO);
+      });
       /*
        * Creamos la lista de tareas en el panel derecho
        */
@@ -120,13 +127,5 @@ private DefaultTableModel taskTableModelM;
       }
    }
 
-   private void delteAllRows(List<Task> listaTareas) {
-      if (listaTareas.isEmpty() || listaTareas == null) {
-         // Do nothing
-         return;
-      }
-      for (Task task : listaTareas) {
-         listaTareas.remove(task);
-      }
-   }
+  
 }
