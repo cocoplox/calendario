@@ -53,6 +53,19 @@ private DefaultTableModel taskTableModelM;
       panelBotones.add(Box.createRigidArea(new Dimension(0, 10)));
       panelBotones.add(deleteButton);
 
+      deleteButton.addActionListener(event -> {
+         String idStr = JOptionPane.showInputDialog("Introduce el ID");
+
+         try {
+            long id = Long.parseLong(idStr);
+            taskDAO.deleteTaskById(id);
+            System.out.println("Tarea eliminada correctamente");
+            loadTasksFromDatabase(taskDAO);
+         } catch (NumberFormatException e) {
+
+            e.printStackTrace();
+         }
+      });
       /*
        * Creamos la lista de tareas en el panel derecho
        */
@@ -76,20 +89,44 @@ private DefaultTableModel taskTableModelM;
       setVisible(true);
 
       loadTasksFromDatabase(taskDAO);
+      /*
+       * Event listener de la tabla
+       */
+      
+
    }
 
    private void loadTasksFromDatabase(TaskDAO taskDao) {
+
+      int index = taskTableModelM.getRowCount();
+
+      if (index > 0) {
+         for (int i = index -1; i >= 0; i--) {
+            taskTableModelM.removeRow(i);
+         }
+      }
+
       List<Task> tasks = taskDao.getAllTasks();
 
       for (Task task : tasks) {
 
          taskTableModelM.addRow(new Object[] {
-            task.getId(),
-            task.getTitle(),
-            task.getDescription(),
-            task.isCompleted() ? "Si" : "No",
-            task.getDate()
+               task.getId(),
+               task.getTitle(),
+               task.getDescription(),
+               task.isCompleted() ? "Si" : "No",
+               task.getDate()
          });
+      }
+   }
+
+   private void delteAllRows(List<Task> listaTareas) {
+      if (listaTareas.isEmpty() || listaTareas == null) {
+         // Do nothing
+         return;
+      }
+      for (Task task : listaTareas) {
+         listaTareas.remove(task);
       }
    }
 }

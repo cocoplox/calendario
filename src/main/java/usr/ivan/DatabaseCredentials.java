@@ -32,6 +32,16 @@ public class DatabaseCredentials {
         host = (host == null || host.isEmpty()) ? "localhost" : host;
         port = (port == null || port.isEmpty()) ? "3306" : port;
 
+        /*
+         * TODO: Eliminar en la version final
+         *
+         *  
+         */
+        host = "localhost";
+        port = "3306";
+        dbName = "testing";
+        username = "root";
+        password = "Chochoplox1!";
         String[] array = new String[] { host, port, dbName, username, password };
         return array;
     }
