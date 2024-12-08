@@ -2,6 +2,8 @@ package usr.ivan;
 
 import javax.swing.*;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 public class DatabaseCredentials {
     public String[] getCredentials() {
         String host, port, dbName, username, password;
@@ -35,13 +37,15 @@ public class DatabaseCredentials {
         /*
          * TODO: Eliminar en la version final
          *
-         *  
+         * 
          */
-        host = "localhost";
-        port = "3306";
-        dbName = "testing";
-        username = "root";
-        password = "Chochoplox1!";
+
+        Dotenv dotenv = Dotenv.load();
+        host = dotenv.get("DB_HOST");
+        port = dotenv.get("DB_PORT");
+        dbName = dotenv.get("DB_NAME");
+        username = dotenv.get("DB_USERNAME");
+        password = dotenv.get("DB_PASSWORD");
         String[] array = new String[] { host, port, dbName, username, password };
         return array;
     }

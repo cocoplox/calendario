@@ -19,9 +19,14 @@ public class TaskBuilder {
 
         title = JOptionPane.showInputDialog("Titulo de la tarea: ");
         descripcion = JOptionPane.showInputDialog("Introduce el contenido de la tarea: ");
+        
         while (true) {
 
             String fechaStr = JOptionPane.showInputDialog("Introduce la fecha: (dd/mm/yyyy)");
+            if(fechaStr == null){
+                JOptionPane.showMessageDialog(null, "Operación cancelada");
+                return null;
+            }
             try {
 
                 fecha = LocalDate.parse(fechaStr, dateTimeFormatter);
